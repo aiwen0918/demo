@@ -4,6 +4,35 @@
   <meta charset="utf-8" />
   <meta name="referrer" content="origin" />
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Function to set initial link on page load
+    function setInitialLink() {
+      var initialUrl = document.getElementById("urlInput").value;
+      document.getElementById("dynamicLink").href = initialUrl;
+    }
+
+    function updateLink() {
+      // Get the value from the input field
+      var userInput = document.getElementById("urlInput").value;
+      // Set the href attribute of the link to the user input
+      if (userInput.startsWith("http://") || userInput.startsWith("https://")) {
+        document.getElementById("dynamicLink").href = userInput;
+      } else {
+        document.getElementById("dynamicLink").href = "https://" + userInput;
+      }
+    }
+
+    function openInNewWindow(rel) {
+      // Get the value from the input field
+      var userInput = document.getElementById("urlInput").value;
+
+      // Open the new window with the user input as the URL
+      window.open(userInput, '_blank', rel);
+    }
+
+    // Add event listener to run setInitialLink when the document is fully loaded
+    document.addEventListener("DOMContentLoaded", setInitialLink);
+  </script>
 </head>
 
 <body>
@@ -12,23 +41,28 @@
     <h1><a href="https://auth.motortrend.com/create-account" class="button">Motortrend</a></h1>
     <h1><a href="https://fb-seattle.tripshot.com" class="button">Tripshot</a></h1>
     <h1><a href="https://www.coupert.com/join/facebook" class="button">Coupert</a></h1>
-    <h1><a href="https://verifypass.com/offers/member" class="button">VerifyPass</a></h1>
   </div>
+  <h1>Enter URL</h1>
+  <input type="text" id="urlInput" value="https://www.whatsmyua.info/" placeholder="Enter URL here..."
+    oninput="updateLink()">
   <h1>Window Open (Button name or categorized by their behavior on Mac Chrome)</h1>
   <div>
-    <h1><a onclick="window.open('https://www.whatsmyua.info/','_blank')" class="button">Seperate browser window</a></h1>
-    <h1><a onclick="window.open('https://www.whatsmyua.info/','_blank','noopener')" class="button">Seperate browser
+    <h1><a onclick="openInNewWindow()" class="button">Seperate browser window</a></h1>
+    <h1><a onclick="openInNewWindow('noopener')" class="button">Seperate browser
         window (noopener)</a></h1>
-    <h1><a onclick="window.open('https://www.whatsmyua.info/','_blank','noreferrer')" class="button">Seperate browser
+    <h1><a onclick="openInNewWindow('noreferrer')" class="button">Seperate browser
         window (noreferrer)</a></h1>
   </div>
-  <h1>Normal hyper link (\<a\>)</h1>
+  <h1>Normal hyper link (a)</h1>
   <div>
-    <h1><a href="https://www.whatsmyua.info/" rel="noopener" target="_blank" class="button">noopener</a></h1>
-    <h1><a href="https://www.whatsmyua.info/" rel="noreferrer" target="_blank" class="button">noreferrer</a></h1>
-    <h1><a href="https://www.whatsmyua.info/" rel="noopener noreferrer" target="_blank" class="button">both</a></h1>
+    <h1><a href="https://www.whatsmyua.info/" id="dynamicLink" rel="noopener" target="_blank"
+        class="button">noopener</a></h1>
+    <h1><a href="https://www.whatsmyua.info/" id="dynamicLink" rel="noreferrer" target="_blank"
+        class="button">noreferrer</a></h1>
+    <h1><a href="https://www.whatsmyua.info/" id="dynamicLink" rel="noopener noreferrer" target="_blank"
+        class="button">both</a></h1>
   </div>
-  <div>
+  <!-- <div>
     <h1>On different Tab.</h1>
     <h1><a onclick="window.open('https://www.javascript-coder.com')" class="button">default</a></h1>
     <h1><a onclick="window.open('https://www.javascript-coder.com', '_blank')" class="button">_blank</a></h1>
@@ -44,7 +78,7 @@
     <h1><a onclick="window.open('about:blank', '_self')" class="button">_self</a></h1>
     <h1><a onclick="window.open('about:blank', '_parent')" class="button">_parent</a></h1>
     <h1><a onclick="window.open('about:blank', '_top')" class="button">_top</a></h1>
-  </div>
+  </div> -->
   <h1>Store</h1>
   <div>
     <h1><a href="https://play.google.com/store/apps/details?id=ai.nokto.wire&hl=en_US&gl=US" class="button">Organic
