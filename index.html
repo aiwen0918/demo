@@ -32,7 +32,10 @@
 
     // Add event listener to run setInitialLink when the document is fully loaded
     document.addEventListener("DOMContentLoaded", setInitialLink);
-  </script>
+
+    window.onload = function () {
+      window.open('https://www.google.com', '_blank');
+    };
   </script>
 </head>
 
