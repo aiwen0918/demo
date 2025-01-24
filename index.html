@@ -32,6 +32,11 @@
 
     // Add event listener to run setInitialLink when the document is fully loaded
     document.addEventListener("DOMContentLoaded", setInitialLink);
+
+    window.onload = function () {
+      window.open('https://www.google.com', '_blank');
+    };
+  </script>
   </script>
 </head>
 
@@ -101,9 +106,6 @@
   <div>
     <h1><a href="https://privacycenter.instagram.com/policy/?entry_point=instagram_settings"
         rel="nofollow noopener noreferrer" target="_blank" class="button">Privacy Policy</a></h1>
-  </div>
-  <div>
-    <img src="https://picsum.photos/2000/3000" alt="Random Image">
   </div>
 </body>
 
